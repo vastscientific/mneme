@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Plot Select</title>
+	</head>
+	<body>
+
+        <div data-role="view" data-title="Plot Select" id="side-projects">
+                <div class="twit-reader">
+                    <div id="listView"></div>
+                </div>
+
+                <script type="text/x-kendo-tmpl" id="template">
+                    <div class="twit">
+                        <a class="t-link"  onclick="plotSelect('${title}','${name}');" title="${title}"><img width="48" height="48" src="${image}" alt="${name}" />${title}</a>
+                        <p>${description}</p>
+                    </div>
+                </script>
+        </div>
+        
+
+        
+            <script>
+        $(document).ready(function() {
+
+            var dataSourcePlots = new kendo.data.DataSource({
+                    data: [
+                        { name: "chromatogram",
+                          id: 1,
+                          description: "Basepeak intensity as a function of retention time",
+                          title: "Chromatogram",
+                          type: "line",
+                          image:"images/favs.png"},
+                        { name: "spray",
+                          id: 1,
+                          description: "Injection spray current as of retention time",
+                          title: "Spray Current",
+                          type: "line",
+                          image:"images/favs.png"},
+                        { name: "features",
+                          id: 1,
+                          description: "MZ of  as a function of retention time",
+                          title: "Number of Features",
+                          type: "scatter",
+                          image:"images/favs.png"}
+                ]
+                });
+            
+
+            $("#listView").kendoListView({
+                dataSource: dataSourcePlots,
+                template: kendo.template($("#template").html())
+            });
+            
+        });
+    </script>
+    <style scoped>
+        .twit-reader 
+        {
+        	width: 340px;
+        	margin: 0 auto;
+        	padding: 0;
+        	border: 0;
+        	border: 1px solid rgba(0,0,0,0.1);
+        	height: 400px;
+        	overflow: auto;
+            -webkit-transform: translatez(0);
+        }
+        .k-listview 
+        {
+        	padding: 0;
+        	border: 0;
+        }
+        .twit 
+        {
+        	width: 300px;
+        	height: 80px;
+        	margin: 0;
+        	padding: 5px;
+        	border-top: 1px solid rgba(255,255,255,0.1);
+        	border-right: 1px solid rgba(0,0,0,0.1);
+        	border-bottom: 1px solid rgba(0,0,0,0.1);
+        	border-left: 1px solid rgba(255,255,255,0.1);
+
+        }
+        .twit img 
+        {
+        	border: 3px solid rgba(0,0,0,0.1);
+        	-webkit-border-radius: 27px;
+            -moz-border-radius: 27px;
+            border-radius: 27px;
+            float: left;
+        }
+        .twit a:hover img 
+        {
+        	border: 3px solid rgba(150,150,150,0.7);
+        }
+        .twit p
+        {
+        	float: left;
+        	margin: 0;
+        	padding: 0 0 0 10px;
+        	width: 230px;
+            font-size: 60%;
+            font-weight: normal;
+            color: #AAA;
+        }
+        .twit:after
+        {
+        	content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+    </style>
+	</body>
+</html>
