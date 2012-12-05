@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<div id="example" class="k-content">
+			<div class="chart-wrapper">
+				<div id="chart"></div>
+			</div>
+		</div>
+
+		<script>
+
+			function createChart() {
+					
+				var dataSource = new kendo.data.DataSource({
+					transport: {
+						read: {
+							url: "http://qaqc.vastsci.com/visualize/Q2JSON.aspx?Q=SELECT%20mz,rt%20from%20rawmeat.rawmeationfeatures%20where%20measid=829%20and%20rt%3C1%20order%20by%20rt",
+							dataType: "json"
+						}
+					}
+				});
+					
+				$("#chart").kendoChart({
+					theme: $(document).data("kendoSkin") || "default",
+					dataSource: dataSource,
+					title: {
+						text: "Query"
+					},
+					legend: {
+						visible: true
+					},
+					seriesDefaults: {
+						type: "scatter"
+					},
+					series: [
+						{
+							field: "mz"
+						}, { categoryField: "rt"}
+					],
+					
+				});
+			
+			}
+			
+			$(document).ready(function() {
+                createChart();
+				//setTimeout(function() {
+				//	// Initialize the chart with a delay to make sure
+				//	// the initial animation is visible
+				//	createChart();
+			
+				//	$("#example").bind("kendo:skinChange", function(e) {
+				//		createChart();
+				//	});
+				//}, 400);
+			});
+		</script>
+
+	</body>
+</html>

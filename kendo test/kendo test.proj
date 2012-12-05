@@ -78,7 +78,9 @@
       <Platform>Android</Platform>
       <TargetName>cordova.js</TargetName>
     </Content>
+    <Content Include="Views\ByProject.ViewNavigation.html" />
     <Content Include="Views\PlotSelect.html" />
+    <Content Include="Views\ScatterPlot.html" />
     <Content Include="Views\ViewNavigation.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Telerik\ICE\Tools\Mobile\MobileTools.targets" />

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Projects</title>
+	</head>
+	<body>
+        <div data-role="view" id="projectlist" data-title="Projects" class="twit">
+            <ul data-role="listview" data-source="DSProjects" data-template="projectsTemplate">
+                
+            </ul>
+        </div>
+        
+         <script type="text/x-kendo-tmpl" id="projectsTemplate">
+                <a class="plink"  title="${Name}"><img width="24" height="24" src="images/folder.png"  />${Name}</a>
+                <p>${CreatedOn}</p>
+        </script>
+        
+        
+         <style scoped>
+
+
+        .twit 
+        {
+        	width: 300px;
+        	height: 80px;
+        	margin: 0;
+        	padding: 10px;
+        	border-top: 1px solid rgba(255,255,255,0.1);
+        	border-right: 1px solid rgba(0,0,0,0.1);
+        	border-bottom: 1px solid rgba(0,0,0,0.1);
+        	border-left: 1px solid rgba(255,255,255,0.1);
+
+        }
+        .twit img 
+        {
+        	border: 3px solid rgba(0,0,0,0.1);
+        	-webkit-border-radius: 27px;
+            -moz-border-radius: 27px;
+            border-radius: 27px;
+            float: left;
+        }
+        .twit a:hover img 
+        {
+        	border: 3px solid rgba(150,150,150,0.7);
+        }
+        .twit p
+        {
+        	float: left;
+        	margin: 0;
+        	padding: 0 0 0 10px;
+        	width: 230px;
+        }
+        .twit:after
+        {
+        	content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+    </style>
+
+
+	</body>
+</html>

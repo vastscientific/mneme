@@ -20,31 +20,6 @@
 				}
 			});
 			
-			var splitViewProducts = new kendo.data.DataSource({
-				type: "odata",
-				serverFiltering: true,
-			
-				transport: {
-					read: {
-						url: "http://demos.kendoui.com/service/Northwind.svc/Products"
-					}
-				}
-			});	
-			
-			var splitViewOrderDetails = new kendo.data.DataSource({
-				type: "odata",
-				serverFiltering: true,
-				transport: {
-					read: {
-						url: "http://demos.kendoui.com/service/Northwind.svc/Order_Details?$expand=Order"
-					}
-				},
-			
-				change: function() {
-					var template = kendo.template($("#ordersTemplate").text());
-					$("#product-details").html(kendo.render(template, this.data()));
-				}
-			});
 			
 			function displayOrder(e) {
 				splitViewOrderDetails.filter({
